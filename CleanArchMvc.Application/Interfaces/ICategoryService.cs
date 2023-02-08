@@ -1,12 +1,16 @@
-﻿using System;
+﻿using CleanArchMvc.Application.DTOs;
+using CleanArchMvc.Domain.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CleanArchMvc.Application.Interfaces
 {
-    internal interface ICategoryService
+    public interface ICategoryService
     {
+        Task<IEnumerable<CategoryDTO>> GetCategoriesAsync();
+        Task<CategoryDTO> GetByIdAsync(int? id);
+        Task AddAsync(CategoryDTO categoryDTO);
+        Task UpdateAsync(CategoryDTO categoryDTO);
+        Task DeleteAsync(int? id);
     }
 }
