@@ -6,7 +6,7 @@ namespace CleanArchMvc.Application.Mappings
 {
     public class DTOToCommandMappingProfile : Profile
     {
-        protected DTOToCommandMappingProfile()
+        public DTOToCommandMappingProfile()
         {
             CreateMap<ProductDTO, ProductCreateCommand>();
             CreateMap<ProductDTO, ProductUpdateCommand>();
