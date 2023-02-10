@@ -41,9 +41,6 @@ namespace CleanArchMvc.Application.Services
 
         public async Task<IEnumerable<ProductDTO>> GetProductsAsync()
         {
-            //var productEntity = await _productRepository.GetProductsAsync();
-            //return _mapper.Map<IEnumerable<ProductDTO>>(productEntity);
-
             var productsQuery = new GetProductsQuery();
 
             if (productsQuery == null)
