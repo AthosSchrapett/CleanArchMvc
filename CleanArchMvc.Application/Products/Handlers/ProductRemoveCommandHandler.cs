@@ -25,7 +25,7 @@ namespace CleanArchMvc.Application.Products.Handlers
                 throw new ApplicationException($"Entity could not be found");
             else
             {
-                var result = await _productRepository.UpdateAsync(product);
+                var result = await _productRepository.DeleteAsync(product);
                 return result;
             }
         }
