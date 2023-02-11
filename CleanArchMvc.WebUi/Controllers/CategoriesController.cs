@@ -52,7 +52,7 @@ namespace CleanArchMvc.WebUi.Controllers
             return View(categoryDTO);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Edit(CategoryDTO categoryDTO)
         {
             if (ModelState.IsValid)
@@ -68,6 +68,25 @@ namespace CleanArchMvc.WebUi.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(categoryDTO);
+        }
+
+        [HttpGet()]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var categoryDTO = await _categoryService.GetByIdAsync(id);
+
+            if (categoryDTO == null) return NotFound();
+
+            return View(categoryDTO);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            await _categoryService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }
