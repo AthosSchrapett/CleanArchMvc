@@ -51,21 +51,21 @@ namespace CleanArchMvc.Application.Services
             return _mapper.Map<IEnumerable<ProductDTO>>(result);
         }
 
-        public async Task RemoveAsync(int? id)
-        {
-           var productRemoveCommand = new ProductRemoveCommand(id.Value);
-
-           if (productRemoveCommand == null)
-                throw new Exception($"Entity could not be loaded.");
-
-            await _mediator.Send(productRemoveCommand);
-
-        }
-
         public async Task UpdateAsync(ProductDTO productDTO)
         {
             var productUpdateCommand = _mapper.Map<ProductUpdateCommand>(productDTO);
             await _mediator.Send(productUpdateCommand);
+        }
+
+        public async Task RemoveAsync(int? id)
+        {
+            var productRemoveCommand = new ProductRemoveCommand(id.Value);
+
+            if (productRemoveCommand == null)
+                throw new Exception($"Entity could not be loaded.");
+
+            await _mediator.Send(productRemoveCommand);
+
         }
     }
 }
