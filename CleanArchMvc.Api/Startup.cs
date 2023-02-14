@@ -29,10 +29,9 @@ namespace CleanArchMvc.Api
         {
             services.AddInfrastructureAPI(Configuration);
             services.AddInfrastructureJWT(Configuration);
+            services.AddInfrastructureSwagger();
 
             services.AddControllers();
-            
-            services.AddInfrastructureSwagger();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,8 +46,11 @@ namespace CleanArchMvc.Api
 
             app.UseHttpsRedirection();
 
+            app.UseStatusCodePages();
+
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
