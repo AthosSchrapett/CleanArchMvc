@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace CleanArchMvc.Domain.Interfaces;
 
-namespace CleanArchMvc.Domain.Interfaces
+public interface IUnitOfWork
 {
-    internal interface IUnitOfWork
-    {
-    }
+    ICategoryRepository CategoryRepository { get; }
+    IProductRepository ProductRepository { get; }
+    Task<int> Commit();
+    void Dispose();
 }
